@@ -14,8 +14,8 @@ const numbers = require('../src/numbers');
 
 */
 
-describe('The function numbers', () => {
-  it('returns true when receives a number-only array and false when receives a mixed array ', () => {
+describe('2 - Implemente os casos de teste para a função `numbers`', () => {
+  it('Verifica se a função `numbers` retorna `true` quando o array contém apenas números e falso caso contrário', () => {
     expect(numbers([1, 2, 3, 4, 5])).toBeTruthy();
   });
   it('returns false when receives an array with numbers and numbers as strings', () => {
