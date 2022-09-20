@@ -9,9 +9,20 @@
     - average([2, 2]) // Retorno: 2;
     - average([1, 1]) // Retorno: 1;
     - average([1, '2']) // Retorno: undefined;
-    change for commit
 */
-
-const average = () => {};
-
+const average = (arr) => {
+  let total = 0;
+  let myAverage = 0;
+  if (arr.length === 0) {
+    return undefined;
+  }
+  for (let i of arr) {
+    if (typeof i !== 'number') {
+      return undefined;
+    }
+    total += i; 
+    } 
+    myAverage = total / arr.length;
+    return Math.round(myAverage);
+  };
 module.exports = average;
