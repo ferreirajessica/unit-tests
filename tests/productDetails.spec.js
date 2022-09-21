@@ -31,13 +31,29 @@ const productDetails = require('../src/productDetails');
 
 describe('6 - Implemente os casos de teste para a função `productDetails`', () => {
   it('Verifica se a função `productDetails` tem o comportamento esperado', () => {
-    fail('Teste vazio!');
-    // ESCREVA SEUS TESTES ABAIXO:
-    // Teste se productDetails é uma função.
-    // Teste se o retorno da função é um array.
-    // Teste se o array retornado pela função contém dois itens dentro.
-    // Teste se os dois itens dentro do array retornado pela função são objetos.
-    // Teste se quando passado parâmetros diferentes entre si, os dois objetos também são diferentes entre si.
-    // Teste se os dois productIds terminam com 123.
+   expect(typeof productDetails).toMatch(/function/);
+  });
+  it('checks whether the function productDetails returns an array', () => {
+    expect(Array.isArray(productDetails('alcool', 'mascara'))).toBeTruthy;
+  });
+  it('checks whether the function productDetails returns 2 items', () => {
+    expect(Array.from(productDetails('alcool', 'mascara')).length).toBe(2);
+  });
+  it('checks whether the function productDetails return has two objects', () => {
+    expect(typeof Array.from(productDetails('alcool', 'mascara'))[0]).toMatch(/object/)
+    expect(typeof Array.from(productDetails('alcool', 'mascara'))[1]).toMatch(/object/);
+  });
+  expect.extend({
+    argumentsNotToMatch(argument1, argument2) {
+      if (argument1 !== argument2) {
+        return true;
+      }
+    }
+  });
+  it('checks if different arguments return different objects', () => {
+    expect(productDetails('alcool', 'mascara')).argumentsNotToMatch.toBeTruthy;
+    expect(Array.from(productDetails('alcool', 'mascara'))[0] !== 
+    Array.from(productDetails('alcool', 'mascara'))[1]).toBeTruthy;
+    expect(Array.from(productDetails('alcool', 'mascara'))[0].details.productId).toMatch(/ *123$/);
   });
 });
